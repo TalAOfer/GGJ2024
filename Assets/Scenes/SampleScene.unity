@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputs: {fileID: 227282279}
   punchHandler: {fileID: 494794544}
-  animationHandler: {fileID: 0}
+  animationHandler: {fileID: 1180461020}
   playerPos: {fileID: 11400000, guid: 4e65570d45fee0e498bb9a7f4b194413, type: 2}
 --- !u!114 &227282276
 MonoBehaviour:
@@ -292,24 +292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee282757e7df52b468db5a2a2ddabf5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnHitPress:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnHitRelease:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &227282280
 MonoBehaviour:
   m_ObjectHideFlags: 0

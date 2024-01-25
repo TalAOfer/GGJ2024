@@ -20,8 +20,8 @@ public class PlayerInputHandler : MonoBehaviour
         private set { _isPressingHit = value; }
     }
 
-    public CustomGameEvent OnHitPress;
-    public CustomGameEvent OnHitRelease;
+    //public CustomGameEvent OnHitPress;
+    //public CustomGameEvent OnHitRelease;
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
@@ -34,12 +34,12 @@ public class PlayerInputHandler : MonoBehaviour
         if (ctx.performed)
         {
             IsPressingHit = true;
-            OnHitPress.Invoke(this, null);
+            //OnHitPress.Invoke(this, null);
         }
         else if (ctx.canceled)
         {
             IsPressingHit = false;
-            OnHitRelease.Invoke(this, null);
+            //OnHitRelease.Invoke(this, null);
         }
     }
 }

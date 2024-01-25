@@ -12,10 +12,21 @@ public class Hittable : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void OnDisable()
+    {
+        rb.gravityScale = 0f;
+        rb.velocity = Vector3.zero;
+    }
     public void Hit(Vector2 direction)
     {
+        OnHit.Invoke(this, null);
+        StartCoroutine(HitRoutine(direction));
+    }
+
+    public IEnumerator HitRoutine(Vector2 direction)
+    {
+        yield return new WaitForSeconds(0.15f);
         rb.AddForce(direction * 10, ForceMode2D.Impulse);
         rb.gravityScale = 2;
-        OnHit.Invoke(this, null);
     }
 }

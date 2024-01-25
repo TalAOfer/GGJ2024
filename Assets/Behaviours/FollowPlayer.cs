@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    [SerializeField] private Vector2Variable playerPos;
+    public Vector2Variable playerPos;
     [SerializeField] private float speed;
 
     public void Update()

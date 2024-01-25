@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cc9b0671225d3c04cbd57d8df5eeb209
+guid: cfe26685f1c528249ac77afe814bbecd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_run_0
+      name: Player_Idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 223ccb64449880349959002cad91bcd4
-      internalID: -114595031
+      spriteID: 6ac6f6d0f402c6341aba5c808aa67d4c
+      internalID: 1274814132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_run_1
+      name: Player_Idle_1
       rect:
         serializedVersion: 2
         x: 64
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1dccba7f66d6c834899c169790661f18
-      internalID: 1928115314
+      spriteID: 097629f5d6558424ca52560a65bc3aad
+      internalID: 602672487
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_run_2
+      name: Player_Idle_2
       rect:
         serializedVersion: 2
         x: 128
@@ -192,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b71fdbd477cbf942affa0222a9f6810
-      internalID: 1736269905
+      spriteID: 09cd4b56aabf9d24db449d800242bcd0
+      internalID: -1737816477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_run_3
+      name: Player_Idle_3
       rect:
         serializedVersion: 2
         x: 192
@@ -213,8 +213,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd9ad12dd0591ba41a5a521ba9e2b03e
-      internalID: -616011557
+      spriteID: e11d667b8bcf92849a46b85ce13983d2
+      internalID: -1756105763
       vertices: []
       indices: 
       edges: []
@@ -230,10 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Enemy_run_0: -114595031
-      Enemy_run_1: 1928115314
-      Enemy_run_2: 1736269905
-      Enemy_run_3: -616011557
+      Player_Idle_0: 1274814132
+      Player_Idle_1: 602672487
+      Player_Idle_2: -1737816477
+      Player_Idle_3: -1756105763
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
