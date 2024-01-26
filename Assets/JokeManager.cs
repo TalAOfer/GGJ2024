@@ -7,14 +7,26 @@ using UnityEngine.UI;
 public class JokeManager : MonoBehaviour
 {
     public float jokeLength;
-    public GameObject speechBubble;
+    public GameObject barContainer;
     public Image bar;
     public TextMeshProUGUI jokeText;
     public CustomGameEvent OnJokeFinished;
+
+    private Coroutine joke;
+
     public void InitiateJoke()
     {
-        speechBubble.SetActive(true);
-        StartCoroutine(JokeRoutine());
+        barContainer.SetActive(true);
+        joke = StartCoroutine(JokeRoutine());
+    }
+
+    public void StopJoke()
+    {
+        if (joke != null) 
+        {
+            StopCoroutine(joke);
+            barContainer.SetActive(false);
+        }
     }
 
     private IEnumerator JokeRoutine()

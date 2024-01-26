@@ -50,14 +50,14 @@ public class CustomAnimator : MonoBehaviour
         target.localPosition = defaultPosition;
     }
 
-    private void SetScale(AnimationConfig config, bool isWidth)
+    public void SetScale(AnimationConfig config, bool isWidth)
     {
         Vector3 newScale = isWidth ? new Vector3(defaultScale.x * config.scaleFactor, defaultScale.y, defaultScale.z)
                            : new Vector3(defaultScale.x, defaultScale.y * config.scaleFactor, defaultScale.z);
         target.localScale = newScale;
     }
 
-    private IEnumerator LerpScale(AnimationConfig config, bool isWidth)
+    public IEnumerator LerpScale(AnimationConfig config, bool isWidth)
     {
         if (config == null) yield break;
 
@@ -82,7 +82,7 @@ public class CustomAnimator : MonoBehaviour
         target.localPosition = targetPosition;
     }
 
-    private IEnumerator LerpToPosition(AnimationConfig config)
+    public IEnumerator LerpToPosition(AnimationConfig config)
     {
         if (config == null) yield break;
 

@@ -42,4 +42,9 @@ public class PlayerInputHandler : MonoBehaviour
             //OnHitRelease.Invoke(this, null);
         }
     }
+
+    public void ResetHit()
+    {
+        _isPressingHit = false;
+    }
 }

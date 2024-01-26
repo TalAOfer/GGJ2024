@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +6,25 @@ using UnityEngine;
 public class OnCollision : MonoBehaviour
 {
     [SerializeField] private string tagName = "Player";
-    public CustomGameEvent response;
+    [SerializeField] private bool onEnter = true;
+    [ShowIf("onEnter")]
+    public CustomGameEvent enterResponse;
+    [SerializeField] private bool onExit;
+    [ShowIf("onExit")]
+    public CustomGameEvent exitResponse;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(tagName))
         {
-            response.Invoke(this, null);
+            enterResponse.Invoke(this, collision.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag(tagName))
+        {
+            exitResponse.Invoke(this, collision.gameObject);
         }
     }
 }

@@ -52,13 +52,11 @@ public class PlayerPunchManager : MonoBehaviour
         {
             if (hit.collider != null)
             {
-                Debug.Log("found coll");
                 Hittable hittable = hit.collider.GetComponent<Hittable>();
                 if (hittable != null)
                 {
-                    Debug.Log("found hit");
                     Vector2 hitDirection = GetDirection(transform.parent, hit.transform);
-                    hittable.Hit(hitDirection);
+                    hittable.Hit(hitDirection, HitType.Horizontal);
                 }
             }
         }

@@ -11,15 +11,13 @@ public class EnemyAnimation : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void PlayDead()
-    {
-        StartCoroutine(HitRoutine());
-    }
-
-    private IEnumerator HitRoutine()
+    public void PlayImpact()
     {
         anim.Play("Enemy_Impact");
-        yield return new WaitForSeconds(0.15f);
+    }
+
+    public void PlayPostImpact()
+    {
         anim.Play("Enemy_AfterImpact");
     }
 }

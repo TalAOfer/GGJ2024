@@ -23,8 +23,8 @@ public class EnemySpawner : MonoBehaviour
 
     public Vector3 GetPointOnMap()
     {
-        int randomX = UnityEngine.Random.Range(-11,11);
-        int randomY = UnityEngine.Random.Range(-6, 6);
+        float randomX = UnityEngine.Random.Range(-11,11);
+        float randomY = UnityEngine.Random.Range(-3.75f, 1);
         temp.x = randomX;
         temp.y = randomY;
 

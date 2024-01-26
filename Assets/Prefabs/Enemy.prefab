@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 8791821147497542005}
   - component: {fileID: 2917018922798917640}
   - component: {fileID: 3818459893419555577}
-  m_Layer: 5
-  m_Name: Speech Bubble
+  m_Layer: 6
+  m_Name: Bar Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8791821147497542005
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00002670288, y: 0.1800003}
-  m_SizeDelta: {x: -0.79055, y: -1.2516}
+  m_AnchoredPosition: {x: 0, y: -0.9}
+  m_SizeDelta: {x: -6, y: -2.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2917018922798917640
 CanvasRenderer:
@@ -88,13 +88,13 @@ GameObject:
   - component: {fileID: 3098038865515814502}
   - component: {fileID: 8121994576303402661}
   - component: {fileID: 3287285527912053950}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3098038865515814502
 RectTransform:
   m_ObjectHideFlags: 0
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 4186455783887474224}
   - component: {fileID: 3680477087081017058}
   - component: {fileID: 5998265024283121051}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 257946582805220541}
   - component: {fileID: 2730109938128843792}
   - component: {fileID: 1529765786811861284}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,8 @@ GameObject:
   - component: {fileID: 611578554355144148}
   - component: {fileID: 7588131385934525292}
   - component: {fileID: 6419777401541551115}
-  m_Layer: 0
+  - component: {fileID: 227600283021814559}
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +543,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.047332525, y: 0.029582858}
+  m_Offset: {x: 0.03735447, y: 0.049539}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -553,7 +554,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5858407, y: 1.7454867}
+  m_Size: {x: 0.8053584, y: 1.8851798}
   m_EdgeRadius: 0
 --- !u!114 &7588131385934525292
 MonoBehaviour:
@@ -567,10 +568,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b0eed4010037e14ba742e67ba84c149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnHit:
+  OnImpact:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6419777401541551115}
+      - m_Target: {fileID: 7588131385934525292}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -582,9 +583,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 257946582805220541}
-        m_TargetAssemblyTypeName: EnemyAnimation, Assembly-CSharp
-        m_MethodName: PlayDead
+      - m_Target: {fileID: 7930360670042482362}
+        m_TargetAssemblyTypeName: JokeManager, Assembly-CSharp
+        m_MethodName: StopJoke
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -594,10 +595,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8540657748563196623}
-        m_TargetAssemblyTypeName: EnemyController, Assembly-CSharp
-        m_MethodName: DestroySelfInTime
+      - m_Target: {fileID: 257946582805220541}
+        m_TargetAssemblyTypeName: EnemyAnimation, Assembly-CSharp
+        m_MethodName: PlayImpact
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnPostImpact:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 257946582805220541}
+        m_TargetAssemblyTypeName: EnemyAnimation, Assembly-CSharp
+        m_MethodName: PlayPostImpact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 227600283021814559}
+        m_TargetAssemblyTypeName: DeathEffectApplier, Assembly-CSharp
+        m_MethodName: ApplyEffects
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -620,6 +648,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPos: {fileID: 11400000, guid: 4e65570d45fee0e498bb9a7f4b194413, type: 2}
   speed: 1
+--- !u!114 &227600283021814559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415436067166469049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 006114e6be12575449157c36dc654d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactEffect:
+    types: 3
+    flyForce: 9
+    gravityScale: 2
+    spinForce: 400
 --- !u!1 &8502534772192987016
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,7 +677,7 @@ GameObject:
   - component: {fileID: 1544973880598854113}
   - component: {fileID: 1105621142903132031}
   - component: {fileID: 7930360670042482362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Joke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -703,21 +748,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagName: Player
-  response:
+  onEnter: 1
+  enterResponse:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: JokeManager, Assembly-CSharp
-        m_MethodName: InitiateJoke
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  onExit: 0
+  exitResponse:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7930360670042482362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,7 +769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jokeLength: 2
-  speechBubble: {fileID: 4352633172681025184}
+  barContainer: {fileID: 4352633172681025184}
   bar: {fileID: 8254310287785491250}
   jokeText: {fileID: 3287285527912053950}
   OnJokeFinished:
@@ -748,7 +786,7 @@ GameObject:
   - component: {fileID: 1155524932201770708}
   - component: {fileID: 5624599417494668951}
   - component: {fileID: 8254310287785491250}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -795,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
+  m_Color: {r: 1, g: 0.3915094, b: 0.3915094, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
