@@ -31,7 +31,7 @@ public class PlayerState
         player.Anim.SetBool(animBoolName, true);
         startTime = Time.time;
         DoChecks();
-        Debug.Log("Hello from " + animBoolName);
+        //Debug.Log("Hello from " + animBoolName);
         isAnimationFinished = false;
         isExitingState = false;
     }

@@ -8,7 +8,7 @@ public class PlayerChargeSmashState : PlayerChargeState
 
     public override void ChangeBarColor()
     {
-        player.ChangeBarColor(Color.red);
+        player.ShowHitTypeIcon(HitType.Smash);
     }
 
     public override void DoChecks()

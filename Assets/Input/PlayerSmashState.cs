@@ -55,7 +55,7 @@ public class PlayerSmashState : PlayerAttackState
                 if (hittable != null)
                 {
                     Vector2 hitDirection = GetDirection(player.transform, hit.transform);
-                    hittable.Hit(hitDirection, HitType.Vertical);
+                    hittable.Hit(hitDirection, HitType.Smash);
                 }
             }
         }

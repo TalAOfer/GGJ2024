@@ -9,7 +9,7 @@ public class PlayerChargePunchState : PlayerChargeState
 
     public override void ChangeBarColor()
     {
-        player.ChangeBarColor(Color.yellow);
+        player.ShowHitTypeIcon(HitType.Punch);
     }
 
     public override void DoChecks()

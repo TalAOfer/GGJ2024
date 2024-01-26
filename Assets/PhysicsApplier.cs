@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathEffectApplier : MonoBehaviour
+public class PhysicsApplier : MonoBehaviour
 {
     public ImpactEffect impactEffect;
     private Rigidbody2D rb;
@@ -11,10 +11,16 @@ public class DeathEffectApplier : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public void FreezeRigidbody()
+    {
+        rb.gravityScale = 0f;
+        rb.velocity = Vector3.zero;
+    }
+
     public void ApplyEffects(Component sender, object data)
     {
-        Vector2 hitDirection = (Vector2)data;
-        impactEffect.Apply(transform, rb, hitDirection);
+        Vector2 force = (Vector2)data;
+        impactEffect.Apply(transform, rb, force);
     }
 
     private void OnDisable()

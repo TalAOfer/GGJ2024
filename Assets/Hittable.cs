@@ -6,12 +6,9 @@ public class Hittable : MonoBehaviour
 {
     public CustomGameEvent OnImpact;
     public CustomGameEvent OnPostImpact;
-    private Rigidbody2D rb;
+    [SerializeField] private HitData hitData;
+    [SerializeField] private float impactDelay = 0.1f;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
     public void Hit(Vector2 direction, HitType hitType)
     {
         OnImpact.Invoke(this, direction);
@@ -20,37 +17,42 @@ public class Hittable : MonoBehaviour
 
     public IEnumerator HitRoutine(Vector2 direction, HitType hitType)
     {
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(impactDelay);
 
-        Vector2 calcDirection = AdjustHitDirection(direction, hitType, 5f, 0.25f);
-        OnPostImpact.Invoke(this, calcDirection);
+        Vector2 force = GetForce(direction, hitType);
+        OnPostImpact.Invoke(this, force);
     }
 
-    public Vector2 AdjustHitDirection(Vector2 originalDirection, HitType hitType, float amplifyFactor, float dampenFactor)
+    public Vector2 GetForce(Vector2 originalDirection, HitType hitType)
     {
-        Vector2 adjustedDirection = originalDirection;
+        Vector2 force = new Vector2();
 
         switch (hitType)
         {
-            case HitType.Vertical:
-                adjustedDirection.x *= dampenFactor; // Dampen horizontal component
-                adjustedDirection.y *= amplifyFactor; // Amplify vertical component
+            case HitType.Uppercut:
+                // Apply a strong upward force and a slight push in the opposite horizontal direction
+                force.y = hitData.uppercutDirection.y * hitData.uppercutForce;
+                force.x = -Mathf.Sign(originalDirection.x) * hitData.uppercutDirection.x * hitData.uppercutForce;
                 break;
-
-            case HitType.Horizontal:
-                adjustedDirection.x *= amplifyFactor; // Amplify horizontal component
-                adjustedDirection.y *= dampenFactor; // Dampen vertical component
+            case HitType.Punch:
+                // Apply a constant force in the direction of the punch with a slight upward component
+                force.x = Mathf.Sign(originalDirection.x) * hitData.punchDirection.x * hitData.punchForce;
+                force.y = hitData.punchDirection.y * hitData.punchForce;
+                break;
+            case HitType.Smash:
+                // Apply a strong upward force and a slight push in the opposite horizontal direction
+                force.y = hitData.smashDirection.y * hitData.smashForce;
+                force.x = -Mathf.Sign(originalDirection.x) * hitData.smashDirection.x * hitData.smashForce;
                 break;
         }
 
-        adjustedDirection.y = Mathf.Abs(adjustedDirection.y);
-
-        return adjustedDirection;
+        return force;
     }
 }
 
 public enum HitType
 {
-    Vertical,
-    Horizontal
+    Uppercut,
+    Punch,
+    Smash,
 }

@@ -10,15 +10,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
 
     public Vector2Variable playerPos;
-    private bool isFacingRight;
+    public bool IsFacingRight { get; private set; }
 
-    public float chargeStartTime;
-    public float chargeAmount;
-    public Image chargeFill;
+    
 
     public BoxCollider2D upperCutCollider;
     public BoxCollider2D punchCollider;
     public CapsuleCollider2D smashCollider;
+
+    #region Punch Bar
+    public float chargeStartTime;
+    public float chargeAmount;
+    public Image chargeFill;
+    public Color inactive;
+    public Image uppercutIcon;
+    public Image punchIcon;
+    public Image smashIcon;
+    #endregion
 
     #region Components
 
@@ -39,6 +47,7 @@ public class PlayerController : MonoBehaviour
     public PlayerChargeSmashState ChargeSmashState { get; private set; }
     public PlayerSmashState SmashState { get; private set; }
 
+
     #endregion
 
     private void Awake()
@@ -46,7 +55,7 @@ public class PlayerController : MonoBehaviour
         Anim = GetComponent<Animator>();
         RB =GetComponent<Rigidbody2D>(); 
 
-        isFacingRight = true;
+        IsFacingRight = true;
 
         StateMachine = new FiniteStateMachine();
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "Idle");
@@ -62,6 +71,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         StateMachine.Initialize(IdleState);
+        ResetHitTypeIcon();
     }
 
     private void Update()
@@ -77,9 +87,33 @@ public class PlayerController : MonoBehaviour
         chargeFill.fillAmount = chargeAmount;
     }
 
-    public void ChangeBarColor(Color color)
+    public void ResetHitTypeIcon()
     {
-        chargeFill.color = color;
+        uppercutIcon.color = inactive;
+        punchIcon.color = inactive;
+        smashIcon.color = inactive;
+    }
+
+    public void ShowHitTypeIcon(HitType hitType)
+    {
+        switch (hitType)
+        {
+            case HitType.Uppercut:
+                uppercutIcon.color = Color.white;
+                punchIcon.color = inactive;
+                smashIcon.color = inactive;
+                break;
+            case HitType.Punch:
+                uppercutIcon.color = inactive;
+                punchIcon.color = Color.white;
+                smashIcon.color = inactive;
+                break;
+            case HitType.Smash:
+                uppercutIcon.color = inactive;
+                punchIcon.color = inactive;
+                smashIcon.color = Color.white;
+                break;
+        }
     }
 
     private void FixedUpdate()
@@ -95,8 +129,8 @@ public class PlayerController : MonoBehaviour
 
     public void CheckFlip(bool resetMovementOnFlip)
     {
-        if ((isFacingRight && inputs.MoveValue.x < 0)
-            || (!isFacingRight && inputs.MoveValue.x > 0))
+        if ((IsFacingRight && inputs.MoveValue.x < 0)
+            || (!IsFacingRight && inputs.MoveValue.x > 0))
         {
             Flip();
 
@@ -114,7 +148,7 @@ public class PlayerController : MonoBehaviour
 
     public void Flip()
     {
-        isFacingRight = !isFacingRight;
+        IsFacingRight = !IsFacingRight;
         Vector3 tempScale = transform.localScale;
         tempScale.x *= -1;
         transform.localScale = tempScale;

@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         timer = 0;
+        Pooler.Spawn(enemyPrefab, GetPointOnMap(), Quaternion.identity);
     }
     public void SpawnEnemy()
     {

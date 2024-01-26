@@ -34,8 +34,18 @@ public class PlayerPunchState : PlayerAttackState
 
     public override void TriggerAttack()
     {
-        Vector2 boxSize = player.punchCollider.size;
-        Vector2 boxCenter = (Vector2)player.transform.position + player.punchCollider.offset;
+
+        Vector2 boxSize = player.upperCutCollider.size;
+        Vector2 offset = player.upperCutCollider.offset;
+
+        // Invert the x component of the offset if the player is flipped
+        if (!player.IsFacingRight)
+        {
+            offset.x = -offset.x;
+        }
+
+        Vector2 boxCenter = (Vector2)player.transform.position + offset;
+
         float angle = player.transform.eulerAngles.z; // Assuming the rotation of the collider is the same as the GameObject
 
         // Perform the BoxCastAll
@@ -46,11 +56,12 @@ public class PlayerPunchState : PlayerAttackState
         {
             if (hit.collider != null)
             {
+                Debug.Log(hit.collider.gameObject.name);
                 Hittable hittable = hit.collider.GetComponent<Hittable>();
                 if (hittable != null)
                 {
                     Vector2 hitDirection = GetDirection(player.transform, hit.transform);
-                    hittable.Hit(hitDirection, HitType.Horizontal);
+                    hittable.Hit(hitDirection, HitType.Punch);
                 }
             }
         }

@@ -35,7 +35,16 @@ public class PlayerUppercutState : PlayerAttackState
     public override void TriggerAttack()
     {
         Vector2 boxSize = player.upperCutCollider.size;
-        Vector2 boxCenter = (Vector2)player.transform.position + player.upperCutCollider.offset;
+        Vector2 offset = player.upperCutCollider.offset;
+
+        // Invert the x component of the offset if the player is flipped
+        if (!player.IsFacingRight)
+        {
+            offset.x = -offset.x;
+        }
+
+        Vector2 boxCenter = (Vector2)player.transform.position + offset;
+
         float angle = player.transform.eulerAngles.z; // Assuming the rotation of the collider is the same as the GameObject
 
         // Perform the BoxCastAll
@@ -50,7 +59,7 @@ public class PlayerUppercutState : PlayerAttackState
                 if (hittable != null)
                 {
                     Vector2 hitDirection = GetDirection(player.transform, hit.transform);
-                    hittable.Hit(hitDirection, HitType.Vertical);
+                    hittable.Hit(hitDirection, HitType.Uppercut);
                 }
             }
         }

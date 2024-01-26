@@ -10,7 +10,7 @@ public class PlayerChargeUppercutState : PlayerChargeState
 
     public override void ChangeBarColor()
     {
-        player.ChangeBarColor(Color.white);
+        player.ShowHitTypeIcon(HitType.Uppercut);
     }
 
     public override void DoChecks()

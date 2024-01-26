@@ -16,6 +16,7 @@ public abstract class PlayerAttackState : PlayerBattleState
     public override void Enter()
     {
         base.Enter();
+        player.ResetMovement();
         player.inputs.ResetHit();
     }
 
@@ -52,6 +53,7 @@ public abstract class PlayerAttackState : PlayerBattleState
         base.AnimationTrigger();
 
         player.chargeAmount = 0;
+        player.ResetHitTypeIcon();
         TriggerAttack();
     }
 
