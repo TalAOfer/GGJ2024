@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour
     public void Laugh()
     {
         StateMachine.ChangeState(LaughState);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Uppercut hit", transform.position);
     }
 
     private void HandleBar()
