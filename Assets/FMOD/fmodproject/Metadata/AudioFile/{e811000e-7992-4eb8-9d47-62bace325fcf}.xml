@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e811000e-7992-4eb8-9d47-62bace325fcf}">
+		<property name="assetPath">
+			<value>FF_CRT_sfx_honk_toy.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.3067573696145125</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e70ed94e-aa7e-4824-abdb-04482b9e6cd3}</destination>
+		</relationship>
+	</object>
+</objects>

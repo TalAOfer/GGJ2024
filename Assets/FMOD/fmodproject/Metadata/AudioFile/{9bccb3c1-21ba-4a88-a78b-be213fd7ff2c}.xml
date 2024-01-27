@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9bccb3c1-21ba-4a88-a78b-be213fd7ff2c}">
+		<property name="assetPath">
+			<value>ESM_Fighting_Game_One_Shot_Designed_Combat_Hits_Fleshy_Hit_Punch_Skin_Impact_Kick_Stab_Cut_Slice_Light_04.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.53232291666666665</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e70ed94e-aa7e-4824-abdb-04482b9e6cd3}</destination>
+		</relationship>
+	</object>
+</objects>

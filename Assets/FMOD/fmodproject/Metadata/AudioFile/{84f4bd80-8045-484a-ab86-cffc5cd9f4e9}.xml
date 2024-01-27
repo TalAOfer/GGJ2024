@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{84f4bd80-8045-484a-ab86-cffc5cd9f4e9}">
+		<property name="assetPath">
+			<value>BRS_Punch_Face_Crunch_Low.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.17414965986394557</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e70ed94e-aa7e-4824-abdb-04482b9e6cd3}</destination>
+		</relationship>
+	</object>
+</objects>

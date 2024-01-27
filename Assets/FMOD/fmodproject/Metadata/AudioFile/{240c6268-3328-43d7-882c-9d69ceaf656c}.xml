@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{240c6268-3328-43d7-882c-9d69ceaf656c}">
+		<property name="assetPath">
+			<value>FightGrunt_BW.55016.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.4186666666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e70ed94e-aa7e-4824-abdb-04482b9e6cd3}</destination>
+		</relationship>
+	</object>
+</objects>

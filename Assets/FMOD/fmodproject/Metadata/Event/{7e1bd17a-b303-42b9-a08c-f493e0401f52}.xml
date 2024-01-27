@@ -94,9 +94,21 @@
 	<object class="MixerBusEffectChain" id="{58f7ba02-50ee-4b64-988a-a8936187d7a3}">
 		<relationship name="effects">
 			<destination>{ad9f8500-f89b-4c46-a642-455a61daaa39}</destination>
+			<destination>{09caaaf4-e52b-4ecd-8dfe-e840dae334a3}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{41b5a90c-cf11-4a1c-a3b9-466e9abcb0f0}" />
 	<object class="MixerBusFader" id="{b99d48b2-45a5-499c-9deb-d0332706aa6d}" />
 	<object class="MixerBusFader" id="{ad9f8500-f89b-4c46-a642-455a61daaa39}" />
+	<object class="DelayEffect" id="{09caaaf4-e52b-4ecd-8dfe-e840dae334a3}">
+		<property name="delay">
+			<value>220</value>
+		</property>
+		<property name="feedback">
+			<value>16</value>
+		</property>
+		<property name="level">
+			<value>-28</value>
+		</property>
+	</object>
 </objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9fb632e7-631d-4b45-a230-cebe5905fede}">
+		<property name="assetPath">
+			<value>PunchFleshHit_SFXB.2414.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.15466666666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e70ed94e-aa7e-4824-abdb-04482b9e6cd3}</destination>
+		</relationship>
+	</object>
+</objects>
