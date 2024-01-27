@@ -34,6 +34,8 @@ public class PlayerSmashState : PlayerAttackState
 
     public override void TriggerAttack()
     {
+        player.ShakeScreen.Raise(player, CameraShakeTypes.Classic);
+
         CapsuleCollider2D punchCollider = player.smashCollider;
         Vector2 capsuleSize = punchCollider.size;
         Vector2 capsuleCenter = (Vector2)player.transform.position + punchCollider.offset;

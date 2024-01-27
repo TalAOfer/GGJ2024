@@ -7,6 +7,12 @@ using Scene = UnityEngine.SceneManagement.Scene;
 
 public class SceneLoader : MonoBehaviour
 {
+    public void RestartLevel()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.buildIndex);
+    }
+
     public void NextLevel()
     {
         Scene scene = SceneManager.GetActiveScene();

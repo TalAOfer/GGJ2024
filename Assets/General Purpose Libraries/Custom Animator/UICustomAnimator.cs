@@ -11,13 +11,14 @@ public class UICustomAnimator : MonoBehaviour
 
     private void Awake()
     {
-        defaultRectSizeX = target.sizeDelta.x;
-        defaultRectSizeY = target.sizeDelta.y;
-        defaultRectPosition = target.anchoredPosition;
+       
     }
 
     public void StartAnimation(AnimationSO animationSO)
     {
+        defaultRectSizeX = target.sizeDelta.x;
+        defaultRectSizeY = target.sizeDelta.y;
+        defaultRectPosition = target.anchoredPosition;
         StopAllCoroutines();
         ResetSizeToDefault();
         ResetPositionToDefault();

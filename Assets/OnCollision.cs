@@ -14,7 +14,7 @@ public class OnCollision : MonoBehaviour
     public CustomGameEvent exitResponse;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(tagName))
+        if (onEnter && collision.CompareTag(tagName))
         {
             enterResponse.Invoke(this, collision.gameObject);
         }
@@ -22,7 +22,7 @@ public class OnCollision : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag(tagName))
+        if (onExit && collision.CompareTag(tagName))
         {
             exitResponse.Invoke(this, collision.gameObject);
         }

@@ -56,7 +56,6 @@ public class PlayerPunchState : PlayerAttackState
         {
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.name);
                 Hittable hittable = hit.collider.GetComponent<Hittable>();
                 if (hittable != null)
                 {
