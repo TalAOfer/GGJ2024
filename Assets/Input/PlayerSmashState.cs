@@ -45,6 +45,7 @@ public class PlayerSmashState : PlayerAttackState
         // Determine the direction of the capsule based on its orientation
         CapsuleDirection2D capsuleDirection = punchCollider.direction;
         Vector2 castDirection = capsuleDirection == CapsuleDirection2D.Vertical ? Vector2.up : Vector2.right;
+        player.ShakeScreen.Raise(player, CameraShakeTypes.Smash);
 
         // Perform the CapsuleCastAll
         RaycastHit2D[] hits = Physics2D.CapsuleCastAll(capsuleCenter, capsuleSize, capsuleDirection, angle, castDirection, 0f, playerData.hittable);

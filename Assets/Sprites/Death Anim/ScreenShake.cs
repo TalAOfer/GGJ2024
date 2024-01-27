@@ -7,6 +7,8 @@ public class ScreenShake : MonoBehaviour
 {
     [Title("Shake Types: Intensity/ Frequency/ Time")]
     [SerializeField] private Vector3 ClassicShake;
+    [SerializeField] private Vector3 SmashShake;
+    [SerializeField] private Vector3 RoarShake;
 
     private CinemachineVirtualCamera cam;
     private CinemachineBasicMultiChannelPerlin perlin;
@@ -31,6 +33,16 @@ public class ScreenShake : MonoBehaviour
                 shakeIntensity = ClassicShake.x;
                 shakeFrequency = ClassicShake.y;
                 shakeTime = ClassicShake.z;
+                break;
+            case CameraShakeTypes.Smash:
+                shakeIntensity = SmashShake.x;
+                shakeFrequency = SmashShake.y;
+                shakeTime = SmashShake.z;
+                break;
+            case CameraShakeTypes.Roar:
+                shakeIntensity = RoarShake.x;
+                shakeFrequency = RoarShake.y;
+                shakeTime = RoarShake.z;
                 break;
         }
 
@@ -60,5 +72,7 @@ public class ScreenShake : MonoBehaviour
 
 public enum CameraShakeTypes
 {
-    Classic
+    Classic,
+    Smash,
+    Roar
 }

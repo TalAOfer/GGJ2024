@@ -51,6 +51,8 @@ public class EnemyController : MonoBehaviour
 
     private bool isEnemyInSight;
 
+    [SerializeField] ParticleSystem particles;
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
@@ -155,7 +157,6 @@ public class EnemyController : MonoBehaviour
         StopJoke();
         anim.Play("Impact");
         physics.FreezeRigidbody();
-
     }
 
     public void GoToFly(Component sender, object data)
@@ -164,6 +165,7 @@ public class EnemyController : MonoBehaviour
         anim.Play("Fly");
         StartDeathClock();
         Vector2 force = (Vector2)data;
+        particles.Play();
         physics.ApplyEffects(this, force);
     }
 

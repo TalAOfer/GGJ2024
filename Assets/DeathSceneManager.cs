@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DeathSceneManager : MonoBehaviour
 {
     public CustomGameEvent OnFinishedDeathAnimation;
-
+    public GameEvent ShakeScreen;
     public RectTransform face;
     [SerializeField] private AnimationSO faceRightSO;
     [SerializeField] private AnimationSO faceMiddleSO;
@@ -32,6 +32,7 @@ public class DeathSceneManager : MonoBehaviour
         topBlockAnimator.StartAnimation(topBlockInSO);
         bottomBlockAnimator.StartAnimation(bottomBlockInSO);
         faceAnimator.StartAnimation(faceRightSO);
+        ShakeScreen.Raise(this, CameraShakeTypes.Roar);
 
         yield return new WaitForSeconds(1.25f);
 

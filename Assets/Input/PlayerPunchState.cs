@@ -51,6 +51,7 @@ public class PlayerPunchState : PlayerAttackState
 
         // Perform the BoxCastAll
         RaycastHit2D[] hits = Physics2D.BoxCastAll(boxCenter, boxSize, angle, Vector2.zero, 0f, playerData.hittable);
+        bool didHit = false;
 
         // Iterate through all hits
         foreach (RaycastHit2D hit in hits)
@@ -66,5 +67,7 @@ public class PlayerPunchState : PlayerAttackState
                 }
             }
         }
+
+        if (didHit) player.ShakeScreen.Raise(player, CameraShakeTypes.Classic);
     }
 }

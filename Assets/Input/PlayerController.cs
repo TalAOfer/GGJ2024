@@ -1,5 +1,6 @@
 
 using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -57,6 +58,10 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D RB { get; private set; }
     #endregion
 
+    public SpriteRenderer sr;
+    public Material flashMaterial;
+    public Material defaultMaterial;
+
     #region FSM
     public FiniteStateMachine StateMachine { get; private set; }
 
@@ -78,6 +83,7 @@ public class PlayerController : MonoBehaviour
     {
         Anim = GetComponent<Animator>();
         RB = GetComponent<Rigidbody2D>();
+        defaultMaterial = sr.material;
 
         FMODUnity.RuntimeManager.PlayOneShot("event:/BGM", transform.position);
 
@@ -112,6 +118,18 @@ public class PlayerController : MonoBehaviour
         StateMachine.CurrentState.LogicUpdate();
     }
 
+    private void ApplyHitFlash()
+    {
+        StartCoroutine(HitFlash(0.125f));
+    }
+
+    private IEnumerator HitFlash(float flashTime)
+    {
+        sr.material = flashMaterial;
+        yield return new WaitForSeconds(flashTime);
+        sr.material = defaultMaterial;
+    }
+
     public void TakeDamage()
     {
         currentHealth -= 1;
@@ -119,6 +137,7 @@ public class PlayerController : MonoBehaviour
         if (currentHealth >= 0)
         {
             OnHealthChange.Raise(this, currentHealth);
+            ApplyHitFlash();
             FMODUnity.RuntimeManager.PlayOneShot("event:/Punch hit", transform.position);
         }
 

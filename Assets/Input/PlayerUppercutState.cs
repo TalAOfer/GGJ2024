@@ -51,6 +51,7 @@ public class PlayerUppercutState : PlayerAttackState
         // Perform the BoxCastAll
         RaycastHit2D[] hits = Physics2D.BoxCastAll(boxCenter, boxSize, angle, Vector2.zero, 0f, playerData.hittable);
 
+        bool didHit = false;
         // Iterate through all hits
         foreach (RaycastHit2D hit in hits)
         {
@@ -59,12 +60,15 @@ public class PlayerUppercutState : PlayerAttackState
                 Hittable hittable = hit.collider.GetComponent<Hittable>();
                 if (hittable != null)
                 {
+                    didHit = true;
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Uppercut hit", player.transform.position);
                     Vector2 hitDirection = GetDirection(player.transform, hit.transform);
                     hittable.Hit(hitDirection, HitType.Uppercut);
                 }
             }
         }
+
+        if (didHit) player.ShakeScreen.Raise(player, CameraShakeTypes.Classic);
     }
 }
 
