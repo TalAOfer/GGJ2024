@@ -15,6 +15,7 @@ public class PlayerSmashState : PlayerAttackState
     public override void Enter()
     {
         base.Enter();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Smash", player.transform.position);
     }
 
     public override void Exit()

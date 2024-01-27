@@ -23,6 +23,16 @@ public class PhysicsApplier : MonoBehaviour
         impactEffect.Apply(transform, rb, force);
     }
 
+    public void DieAfterDelay()
+    {
+        StartCoroutine(Die());
+    }
+    public IEnumerator Die()
+    {
+        yield return new WaitForSeconds(3);
+        Pooler.Despawn(gameObject);
+    }
+
     private void OnDisable()
     {
         rb.gravityScale = 0f;

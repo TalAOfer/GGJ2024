@@ -14,6 +14,7 @@ public class PlayerPunchState : PlayerAttackState
     public override void Enter()
     {
         base.Enter();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Punch release", player.transform.position);
     }
 
     public override void Exit()
@@ -35,8 +36,8 @@ public class PlayerPunchState : PlayerAttackState
     public override void TriggerAttack()
     {
 
-        Vector2 boxSize = player.upperCutCollider.size;
-        Vector2 offset = player.upperCutCollider.offset;
+        Vector2 boxSize = player.punchCollider.size;
+        Vector2 offset = player.punchCollider.offset;
 
         // Invert the x component of the offset if the player is flipped
         if (!player.IsFacingRight)
@@ -59,6 +60,7 @@ public class PlayerPunchState : PlayerAttackState
                 Hittable hittable = hit.collider.GetComponent<Hittable>();
                 if (hittable != null)
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Uppercut hit", player.transform.position);
                     Vector2 hitDirection = GetDirection(player.transform, hit.transform);
                     hittable.Hit(hitDirection, HitType.Punch);
                 }

@@ -79,6 +79,8 @@ public class PlayerController : MonoBehaviour
         Anim = GetComponent<Animator>();
         RB = GetComponent<Rigidbody2D>();
 
+        FMODUnity.RuntimeManager.PlayOneShot("event:/BGM", transform.position);
+
         inputManager.enabled = true;
         IsFacingRight = true;
         currentHealth = 3;
@@ -114,7 +116,12 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= 1;
 
-        if (currentHealth >= 0) OnHealthChange.Raise(this, currentHealth);
+        if (currentHealth >= 0)
+        {
+            OnHealthChange.Raise(this, currentHealth);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Punch hit", transform.position);
+        }
+
         if (currentHealth <= 0) 
         {
             smashCollider.size = new Vector2(20, 20);

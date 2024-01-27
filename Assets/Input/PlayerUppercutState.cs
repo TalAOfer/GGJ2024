@@ -14,6 +14,7 @@ public class PlayerUppercutState : PlayerAttackState
     public override void Enter()
     {
         base.Enter();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Uppercut release", player.transform.position);
     }
 
     public override void Exit()
@@ -58,6 +59,7 @@ public class PlayerUppercutState : PlayerAttackState
                 Hittable hittable = hit.collider.GetComponent<Hittable>();
                 if (hittable != null)
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Uppercut hit", player.transform.position);
                     Vector2 hitDirection = GetDirection(player.transform, hit.transform);
                     hittable.Hit(hitDirection, HitType.Uppercut);
                 }
